@@ -102,48 +102,13 @@ ul{
     margin-top:14px;
 }
 
-@media print{
-        body{
-            margin:20mm;
-        }
-        .print-button{
-            display:none;
-        }
-    }
-
-.section, .job, .project {
-    page-break-inside: avoid;
-    break-inside: avoid;
-}
-
 @page {
     size: letter;
     margin: 0.5in;
 }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-<script>
-function downloadPDF() {
-    // temporarily hide print/pdf buttons to avoid them appearing in the PDF
-    const buttons = document.querySelectorAll('.print-button');
-    buttons.forEach(btn => btn.style.display = 'none');
 
-    const element = document.body;
-    const opt = {
-        margin: 0.5,
-        filename: 'Boris_Novikov_CV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] }
-    };
-    html2pdf().set(opt).from(element).save().then(() => {
-        // restore button visibility after PDF generated
-        buttons.forEach(btn => btn.style.display = 'flex');
-    });
-}
-</script>
 
 </head>
 
@@ -156,7 +121,7 @@ Senior Unity / XR Systems Engineer
 
 <div style="display: flex; gap: 8px;">
     <button class="print-button" onclick="window.print()" title="Print this page">Print</button>
-    <button class="print-button pdf-button" onclick="downloadPDF()" title="Download as PDF">PDF</button>
+    <a class="print-button pdf-button" href="https://dnnkeeper.github.io/Boris%20Novikov%20%E2%80%94%20Senior%20Unity%20XR%20Engineer.pdf" target="_blank" rel="noopener" title="Download PDF" style="text-decoration: none;">PDF</a>
 </div>
 
 <div class="header-grid small">
