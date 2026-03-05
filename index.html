@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Boris Novikov — Senior Unity XR Engineer</title>
+
+<style>
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial;
+    max-width: 900px;
+    margin: 40px auto;
+    line-height: 1.55;
+    color:#222;
+}
+
+h1{
+    margin-bottom:4px;
+}
+
+.subtitle{
+    font-size:18px;
+    color:#444;
+    margin-bottom:20px;
+}
+
+.section{
+    margin-top:32px;
+}
+
+.section h2{
+    border-bottom:1px solid #ddd;
+    padding-bottom:6px;
+}
+
+ul{
+    margin-top:8px;
+}
+
+.header-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.print-button{
+    background:#0a66c2;
+    color:#fff;
+    border:none;
+    padding:4px 8px;
+    font-size:14px;
+    border-radius:4px;
+    cursor:pointer;
+    align-self:flex-start;
+    display:flex;
+    align-items:center;
+}
+
+.pdf-button::before{
+    content:"\1F4C4"; /* 📄 page icon */
+    margin-right:4px;
+}
+
+.print-button:hover{
+    background:#084c8d;
+}
+
+.print-button::before{
+    content:"\1F5B6"; /* 🖖 printer emoji */
+    margin-right:4px;
+}
+
+.links a{
+    text-decoration:none;
+    color:#0a66c2;
+}
+
+.small{
+    color:#555;
+}
+
+.job{
+    margin-top:16px;
+}
+
+.job-title{
+    font-weight:600;
+}
+
+.job-meta{
+    color:#555;
+    font-size:14px;
+}
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.project{
+    margin-top:14px;
+}
+
+@media print{
+        body{
+            margin:20mm;
+        }
+        .print-button{
+            display:none;
+        }
+    }
+
+.section, .job, .project {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<script>
+function downloadPDF() {
+    // temporarily hide print/pdf buttons to avoid them appearing in the PDF
+    const buttons = document.querySelectorAll('.print-button');
+    buttons.forEach(btn => btn.style.display = 'none');
+
+    const element = document.body;
+    const opt = {
+        margin: 0.5,
+        filename: 'Boris_Novikov_CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+    };
+    html2pdf().set(opt).from(element).save().then(() => {
+        // restore button visibility after PDF generated
+        buttons.forEach(btn => btn.style.display = 'flex');
+    });
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>Boris Novikov</h1>
+<div class="subtitle">
+Senior Unity / XR Systems Engineer
+</div>
+
+<div style="display: flex; gap: 8px;">
+    <button class="print-button" onclick="window.print()" title="Print this page">Print</button>
+    <button class="print-button pdf-button" onclick="downloadPDF()" title="Download as PDF">PDF</button>
+</div>
+
+<div class="header-grid small">
+
+<div>
+Antalya, Turkey<br>
+Open to relocation (EU / UK / North America / UAE)
+</div>
+
+<div class="links">
+Email: <a href="mailto:dnnkeeper@gmail.com">dnnkeeper@gmail.com</a><br>
+Telegram: <a href="https://t.me/dnnkeeper">@dnnkeeper</a><br>
+LinkedIn: <a href="https://linkedin.com/in/boris-novikov-88797b36">linkedin.com/in/boris-novikov-88797b36</a><br>
+GitHub: <a href="https://github.com/dnnkeeper">github.com/dnnkeeper</a><br>
+YouTube: <a href="https://youtube.com/@BorisNovikov1989">youtube.com/@BorisNovikov1989</a><br>
+Medium: <a href="https://medium.com/@dnnkeeper">medium.com/@dnnkeeper</a>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Summary</h2>
+
+<p>
+Senior Unity engineer with 10+ years of experience developing XR applications,
+multiplayer systems, and real-time simulation environments. Expertise in mobile VR optimization, rendering pipeline extensions, and AI-driven interaction systems.   
+</p>
+
+<ul>
+<li>High‑fidelity mobile VR optimization on Meta Quest devices (CPU/GPU
+budgeting, draw‑call reduction, overdraw control).</li>
+<li>Scalable multiplayer architectures with client‑side prediction and
+persistent world states.</li>
+<li>AI‑driven interaction systems using local LLMs, OpenAI Realtime API
+agents, and voice routing via Agora.</li>
+<li>Rendering pipeline extensions (URP, Vulkan subpasses, cubemap fog).
+</li>
+<li>Tools & automation including Python/Blender asset pipelines and custom
+shader development.</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Core Expertise</h2>
+
+<div class="skills-grid">
+
+<div>
+<b>Real‑Time Engine Development</b><br>
+Unity (10+ years), C#, Burst Compiler, Job System, DOTS,
+Addressables, URP/HDRP, custom native plugins (C++/JSlib), Shader Graph
+</div>
+
+<div>
+<b>Mobile XR Optimization</b><br>
+Meta Quest performance tuning, CPU/GPU frame budgeting, draw‑call and
+shader overdraw reduction, mobile VR avatar optimizations
+</div>
+
+<div>
+<b>Rendering & Technical Art</b><br>
+URP internals, Vulkan subpasses, HLSL/GLSL shader development, custom BRDFs,
+stencil portals/occlusion, cubemap fog, volumetric effects
+</div>
+
+<div>
+<b>GPU Profiling & Debugging</b><br>
+RenderDoc, GPU frame analysis, memory profiling, shader optimization, mobile GPU bottleneck identification
+</div>
+
+<div>
+<b>Multiplayer Systems</b><br>
+Coherence persistent worlds, Photon PUN, Mirror, networked physics,
+client‑side prediction
+</div>
+
+<div>
+<b>AI‑Driven Interaction</b><br>
+Local LLM inference (Qwen/Llama/Phi), OpenAI Realtime API, function‑calling
+agents, voice pipelines with Agora, LLM-driven NPC behavior and dialogue systems
+</div>
+
+<div>
+<b>Animation & Simulation</b><br>
+Full‑body IK, procedural animation, distance matching, PID controllers,
+PhysX
+</div>
+
+<div>
+<b>Tools & Pipeline Automation</b><br>
+Python, Blender API automation, asset processing pipelines, custom Editors
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Professional Experience</h2>
+
+<div class="job">
+
+<div class="job-title">
+DEXART Metaverse — Lead Unity Developer
+</div>
+
+<div class="job-meta">
+2022 — 2026
+</div>
+
+<ul>
+<li>Architected and maintained a cross‑platform metaverse client deployed on
+6 platforms (Meta Quest, Windows VR/Desktop, Android, iOS, macOS, WebGL).</li>
+<li>Built Addressable-based modular project architecture enabling user-generated content (UGC) with runtime asset
+    loading and content versioning.</li>
+<li>Integrated Agora Audio/Video SDK for proximity-based voice chat and video streaming; implemented spatial audio routing and dynamic participant culling based on avatar distance.</li>
+<li>Led migration to coherence networking system for persistent world state
+    synchronization; supported 100+ concurrent users.</li>
+<li>Implemented client‑side prediction and networked physics for responsive
+    multiplayer.</li>
+<li>Developed Burst‑accelerated full‑body IK system using Job System for
+stable mobile VR avatars.</li>
+<li>Designed multi‑speaker conversational NPC system with OpenAI Realtime
+API and Agora voice routing; agents handled prioritized streams and
+function‑calling commands to scan and interact with world.</li>
+<li>Conducted GPU profiling (RenderDoc, Unity profiler) and tuned rendering
+and memory to meet strict mobile XR CPU/GPU budgets.</li>
+
+</ul>
+
+</div>
+
+
+<div class="job">
+
+<div class="job-title">
+Freelance Unity Developer
+</div>
+
+<div class="job-meta">
+2020 — 2022
+</div>
+
+<ul>
+<li>Worked with indie developers to delivered gameplay systems, multiplayer physics synchronization logic,
+and real‑time PvP features for clients. Geeky House (Minetap) and
+Greenbutton Games (GetOverIt PVP).</li>
+<li>Built AR marketing & visualization experiences for Mixar and other
+startups.</li>
+<li>Handled reverse engineering, optimization, and engine‑level fixes
+across various projects.</li>
+</ul>
+
+</div>
+
+
+<div class="job">
+
+<div class="job-title">
+White Rabbit Lab — Lead AR Developer
+</div>
+
+<div class="job-meta">
+2017 — 2020
+</div>
+
+<ul>
+<li>Engineered SLAM‑based indoor navigation system using ARCore/ARKit for
+large-scale venues.</li>
+<li>Implemented custom AR shaders for occlusion handling and stencil‑based
+portal effects.</li>
+<li>Developed autonomous NPC systems with navigation and dialogue
+interaction.</li>
+<li>Delivered tools for content creation and pipeline automation.
+</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Selected Projects</h2>
+
+<div class="project">
+
+<b>Half-Life: Alyx Mobile Optimization (Meta Quest 3)</b>
+
+<p>
+Ported Source 2 assets to Unity and rebuilt rendering pipeline using URP.
+Achieved stable 72 FPS on standalone Quest 3 while maintaining visual fidelity
+close to the original PCVR scene.
+</p>
+
+</div>
+
+<div class="project">
+
+    <b>AI NPC with Voice Interface in Multiplayer</b>
+
+    <p>
+        Developed a multi-speaker conversational NPC system where agents perceive the game world through spatial
+        descriptions, hear multiple concurrent players via Agora voice routing, and execute role-playing interactions.
+        Implemented local LLM inference (Qwen/Llama) with OpenAI Realtime API fallback for low-latency dialogue. NPCs
+        maintain contextual awareness of nearby objects and players, dynamically adjust voice presence based on
+        distance, and execute function-calling commands to interact with world objects and trigger narrative events.
+    </p>
+
+</div>
+
+<div class="project">
+
+<b>Overwatch Movement Reconstruction</b>
+
+<p>
+Reverse-engineered player locomotion system and implemented layered procedural
+animation using Unity Animation Rigging.</p>
+</div>
+
+<div class="project">
+
+<b>Rendering Pipeline Extensions</b>
+
+<p>
+Extended Unity URP with advanced rendering techniques including Vulkan
+subpass rendering borrowed from META's URP fork, optimized volumetric fog
+sampling using tiled depth buffers, and added support for cubemap fog effects.
+</p>
+</div>
+
+<div class="project">
+
+<b>Blender Automation Tools</b>
+
+<p>
+Wrote Python scripts for asset pipeline optimization such as "Link Similar
+Meshes" which detects identical mesh data blocks and automatically links them,
+reducing runtime memory usage significantly.
+</p>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Education</h2>
+
+<p>
+<b>Specialist in Philosophy</b> — Minin University (2014)
+</p>
+
+<p>
+<b>Applied Physics and Mathematics</b> — Lobachevsky State University
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h2>Languages</h2>
+
+<p>
+English — Professional working proficiency<br>
+Russian — Native
+</p>
+
+</div>
+
+
+</body>
+</html>
